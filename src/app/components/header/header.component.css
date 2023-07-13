@@ -1,0 +1,42 @@
+.container-menu-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+  background-color: rgb(54, 54, 54);
+}
+
+.logo_image {
+  max-height: 75px;
+  margin: 10px auto;
+}
+
+.container_content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: auto 30px;
+}
+
+.container_content ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.container_content li{
+  margin: auto 25px;
+}
+
+.items {
+  text-transform: uppercase;
+  font-size: larger;
+}
+
+i {
+  margin-right: 5px;
+}
+
+.login {
+  font-size: larger;
+}

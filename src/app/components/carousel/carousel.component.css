@@ -1,0 +1,47 @@
+.container {
+  position: relative;
+  padding: 15px;
+  max-width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.gallery-wrapper {
+  overflow-x: auto;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: row nowrap;
+  gap: 15px;
+}
+
+.arrow-left, .arrow-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  font-size: 20px;
+  width: 40px;
+  cursor: pointer;
+  border: none;
+  opacity: .1;
+  transition: all 600ms ease-in-out;
+}
+
+.arrow-left {
+  background: linear-gradient(to left, transparent 0%, black 200%);
+  left: 0;
+  right: auto;
+}
+
+.arrow-right {
+  background: linear-gradient(to right, transparent 0%, black 200%);
+  right: 0;
+  left: auto;
+}
+
+.arrow-left:hover, .arrow-right:hover {
+  opacity: 1;
+}

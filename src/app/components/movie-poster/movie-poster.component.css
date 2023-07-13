@@ -1,0 +1,11 @@
+img {
+  max-width: 250px;
+  border-radius: 10px;
+  margin: 25px 15px;
+}
+
+img:hover {
+  cursor: pointer;
+  border: solid 3px white;
+  transform: scale(1.1);
+}
