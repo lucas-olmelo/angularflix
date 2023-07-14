@@ -1,10 +1,16 @@
 <div class="container">
-  <button class="arrow-left control" aria-label="Previous image">
-      <i class="fa-solid fa-backward" style="color: #fff;"></i>
-  </button>
-  <div class="gallery-wrapper">
-      <div class="gallery"></div>
+  <div>
+    <div (click)="goToPrevious()" class="leftArrow">❰</div>
+    <div (click)="goToNext()" class="rightArrow">❱</div>
   </div>
-  <button class="arrow-right control" aria-label="Previous image">
-      <i class="fa-solid fa-forward" style="color: #fff;"></i>
-  </button>
+  <img class="slide" src="{{getCurrentSlideUrl()}}" alt="">
+  <div class="dotsContainer">
+    <div
+      *ngFor="let slide of slides; let slideIndex = index"
+      class="dot"
+      (click)="goToSlide(slideIndex)"
+    >
+      ●
+    </div>
+  </div>
+</div>

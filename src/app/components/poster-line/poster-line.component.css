@@ -30,12 +30,12 @@
 }
 
 .arrow-left, .arrow-right {
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  bottom: 0;
+  bottom: 0; */
   font-size: 20px;
   width: 40px;
-  height: 100%;
+  /* height: 100%; */
   cursor: pointer;
   border: none;
   opacity: .1;

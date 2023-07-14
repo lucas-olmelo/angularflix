@@ -10,6 +10,8 @@ export class HomeComponent implements OnInit {
 
   movies: any[] = [
   ];
+  banners: any[] = [
+  ];
 
   constructor(private moviesService: MoviesService) { }
 
@@ -21,5 +23,9 @@ export class HomeComponent implements OnInit {
     const request = await this.moviesService.getTrending();
     this.movies = request;
     console.log(this.movies);
+
+    this.movies.forEach(movie => {
+      this.banners.push(movie.backdrop_path);
+    });
   }
 }

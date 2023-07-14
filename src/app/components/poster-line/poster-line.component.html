@@ -6,7 +6,7 @@
     <i class="fa-solid fa-backward" style="color: #fff;"></i>
   </button>
   <div class="movies-container">
-    <app-movie-poster *ngFor="let name of movies" [movie]="name"></app-movie-poster>
+    <app-movie-poster class="item" *ngFor="let name of movies" [movie]="name"></app-movie-poster>
   </div>
   <button class="arrow-right control" aria-label="Previous image">
     <i class="fa-solid fa-forward" style="color: #fff;"></i>

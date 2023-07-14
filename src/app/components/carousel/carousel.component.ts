@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-carousel',
@@ -9,22 +9,48 @@ export class CarouselComponent implements OnInit {
 
   constructor() { }
 
+  @Input() slides: any;
+
+  baseUrl = "https://image.tmdb.org/t/p/original"
+
+  currentIndex: number = 0;
+  timeoutId?: number;
+
   ngOnInit(): void {
-    var controls = document.querySelectorAll('.control');
-
-    controls.forEach(control => {
-        control.addEventListener('click', () => {
-
-          var isLeft = control.classList.contains('arrow-left');
-
-          if (isLeft) {
-            
-          } else {
-
-          }
-
-        });
-    });
+    this.resetTimer();
   }
 
+  resetTimer() {
+    if (this.timeoutId) {
+      window.clearTimeout(this.timeoutId);
+    }
+    this.timeoutId = window.setTimeout(() => this.goToNext(), 6000);
+  }
+
+  goToPrevious(): void {
+    const isFirstSlide = this.currentIndex === 0;
+    const newIndex = isFirstSlide
+      ? this.slides.length - 1
+      : this.currentIndex - 1;
+
+    this.resetTimer();
+    this.currentIndex = newIndex;
+  }
+
+  goToNext(): void {
+    const isLastSlide = this.currentIndex === this.slides.length - 1;
+    const newIndex = isLastSlide ? 0 : this.currentIndex + 1;
+
+    this.resetTimer();
+    this.currentIndex = newIndex;
+  }
+
+  goToSlide(slideIndex: number): void {
+    this.resetTimer();
+    this.currentIndex = slideIndex;
+  }
+
+  getCurrentSlideUrl() {
+    return this.baseUrl + this.slides[this.currentIndex];
+  }
 }

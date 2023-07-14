@@ -16,8 +16,6 @@ export class MoviePosterComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.movie.id;
-    console.log(this.id);
-
   }
 
 }
