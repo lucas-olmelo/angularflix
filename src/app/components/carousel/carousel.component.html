@@ -1,12 +1,15 @@
-<div class="item" [style.backgroundImage]="'url(' + getCurrentSlideUrl() + ')'">
-  <span class="title">{{getMovieTitle()}}</span>
-</div>
+<a [routerLink]="[getMovieId()]">
+  <div class="item" [style.backgroundImage]="'url(' + getCurrentSlideUrl() + ')'">
+    <span class="title">{{getMovieTitle()}}</span>
+  </div>
+</a>
 
 <div class="botoes-controle">
   <button
     *ngFor="let slide of slides; index as i"
     [class.ativo]="i === indexImagemAtiva"
-    (click)="pararTimer(); ativarImagem(i)"></button>
+    (click)="pararTimer(); ativarImagem(i)">
+  </button>
 </div>
 
 <img

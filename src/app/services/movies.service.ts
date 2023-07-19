@@ -10,7 +10,7 @@ export class MoviesService {
 
   config = {
     api_key: '906ee8fec43965cfb3accc4205c359ec',
-    api_base_url: 'https://api.themoviedb.org/3/',
+    api_base_url: 'https://api.themoviedb.org/3',
   }
 
   BASE_URL = this.config.api_base_url
@@ -23,6 +23,32 @@ export class MoviesService {
         const responseData = await response.json();
         data = responseData?.results;
         console.log(data);
+    } catch (error) {
+
+    }
+    return data
+  }
+
+  public async getMovie(id: string): Promise<any[]> {
+
+    let data = []
+    try {
+        const response = await fetch(`${this.BASE_URL}/movie/${id}?language=pt-BR&api_key=${this.API_KEY}`);
+        const responseData = await response.json();
+        data = responseData;
+    } catch (error) {
+
+    }
+    return data
+  }
+
+  public async getShow(id: string): Promise<any[]> {
+
+    let data = []
+    try {
+        const response = await fetch(`${this.BASE_URL}/tv/${id}?language=pt-BR&api_key=${this.API_KEY}`);
+        const responseData = await response.json();
+        data = responseData;
     } catch (error) {
 
     }

@@ -2,7 +2,7 @@
   background-size: 100% 125%;
   background-repeat: no-repeat;
   height: 600px;
-  transition: all 0.5s ease-in-out;
+  /* transition: all 0.5s ease-in-out; */
   background-position-x: center;
   background-clip: padding-box;
   border: 1px solid white;

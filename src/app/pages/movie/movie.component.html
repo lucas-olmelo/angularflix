@@ -1,1 +1,18 @@
-<p>movie works!</p>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<div class="movie_container" [style.backgroundImage]="'url(' + imageUrl + details.backdrop_path +')'">
+  <div class="wrapper">
+    <div class="btn_voltar">
+      <a [routerLink]="['']"><i class="bi bi-arrow-left"></i></a>
+    </div>
+    <h1 class="movie_title">{{details.title}}</h1>
+    <p *ngIf="details.original_title != details.title">{{details.original_title}}</p>
+    <img class="company_logo" src="{{imageUrl}}{{details.production_companies[0].logo_path}}" alt="{{details.production_companies[0].name}}">
+    <div class="movie_genres">
+      <p *ngFor="let genre of details.genres">{{genre.name}}</p>
+    </div>
+    <h2 class="movie_tagline">{{details.tagline}}</h2>
+    <p class="movie_overview">{{details.overview}}</p>
+  </div>
+</div>
+
+<!-- <img src="{{imageUrl}}{{details.backdrop_path}}" alt=""> -->

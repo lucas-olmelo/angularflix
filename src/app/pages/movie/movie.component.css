@@ -1,0 +1,56 @@
+.movie_container {
+  color: white;
+  text-shadow: black 2px 2px 0;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+}
+
+.wrapper {
+  padding: 2%;
+  background-color: rgba(10,23,55,0.7);
+  width: 100vw;
+  height: 100vh;
+}
+
+.movie_title {
+  font-size: 50px;
+}
+
+.company_logo {
+  max-width: 10%;
+  max-height: 5%;
+  background-color: transparent;
+  margin: 1% auto;
+}
+
+.movie_overview {
+  margin: 1% 0 2%;
+  width: 40%;
+  font-size: 20px;
+}
+
+.movie_genres {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin-bottom: 2%;
+}
+
+.btn_voltar {
+  background-color: transparent;
+  margin-bottom: 1%;
+}
+
+.btn_voltar i {
+  font-size: 30px;
+  background-color: transparent;
+}
+
+p, h1, h2, a {
+  background-color: transparent;
+}

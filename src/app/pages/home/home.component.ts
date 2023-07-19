@@ -8,12 +8,10 @@ import { MoviesService } from 'src/app/services/movies.service';
 })
 export class HomeComponent implements OnInit {
 
-  movies: any[] = [
-  ];
-  banners: any[] = [
-  ];
-  titles: any[] = [
-  ];
+  movies: any[] = [];
+  banners: string[] = [];
+  titles: string[] = [];
+  ids: string[] = [];
 
   constructor(private moviesService: MoviesService) { }
 
@@ -24,10 +22,10 @@ export class HomeComponent implements OnInit {
   async getMovies() {
     const request = await this.moviesService.getTrending();
     this.movies = request;
-    console.log(this.movies);
 
     this.movies.forEach(movie => {
       this.banners.push(movie.backdrop_path);
+      this.ids.push(movie.id);
       if (movie.title != null) {
         this.titles.push(movie.title);
       } else {

@@ -10,7 +10,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
 
   constructor() { }
 
-  baseUrl = "https://image.tmdb.org/t/p/original"
+  baseUrl = "https://image.tmdb.org/t/p/original";
 
   // Guarda a referência do temporizador.
   // Assim conseguimos interromper o temporizador
@@ -21,6 +21,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
   // no carrossel
   @Input() slides: string[] = [];
   @Input() titles: string[] = [];
+  @Input() ids: string[] = [];
 
   // Guarda a posição no array "imagens" que
   // corresponde a imagem que está sendo exibida
@@ -66,5 +67,9 @@ export class CarouselComponent implements OnInit, OnDestroy {
 
   getMovieTitle(){
     return this.titles[this.indexImagemAtiva];
+  }
+
+  getMovieId(){
+    return this.ids[this.indexImagemAtiva];
   }
 }
