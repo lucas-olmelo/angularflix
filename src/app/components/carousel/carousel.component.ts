@@ -1,56 +1,70 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription, timer } from 'rxjs';
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.css']
 })
-export class CarouselComponent implements OnInit {
+export class CarouselComponent implements OnInit, OnDestroy {
 
   constructor() { }
 
-  @Input() slides: any;
-
   baseUrl = "https://image.tmdb.org/t/p/original"
 
-  currentIndex: number = 0;
-  timeoutId?: number;
+  // Guarda a referência do temporizador.
+  // Assim conseguimos interromper o temporizador
+  // a qualquer momento
+  timerSubs!: Subscription;
+
+  // Array com a URL das imagens que serão exibidas
+  // no carrossel
+  @Input() slides: string[] = [];
+  @Input() titles: string[] = [];
+
+  // Guarda a posição no array "imagens" que
+  // corresponde a imagem que está sendo exibida
+  // no carrossel
+  private _indexImagemAtiva: number = 0;
+  get indexImagemAtiva() {
+    return this._indexImagemAtiva;
+  }
+
+  set indexImagemAtiva(value: number) {
+    this._indexImagemAtiva =
+      value < this.slides.length ? value : 0;
+  }
 
   ngOnInit(): void {
-    this.resetTimer();
+    this.iniciarTimer();
   }
 
-  resetTimer() {
-    if (this.timeoutId) {
-      window.clearTimeout(this.timeoutId);
-    }
-    this.timeoutId = window.setTimeout(() => this.goToNext(), 6000);
+  ngOnDestroy(): void {
+    this.pararTimer();
   }
 
-  goToPrevious(): void {
-    const isFirstSlide = this.currentIndex === 0;
-    const newIndex = isFirstSlide
-      ? this.slides.length - 1
-      : this.currentIndex - 1;
-
-    this.resetTimer();
-    this.currentIndex = newIndex;
+  iniciarTimer(): void {
+    this.timerSubs = timer(6000).subscribe(() => {
+      this.ativarImagem(
+        this.indexImagemAtiva + 1
+      );
+    });
   }
 
-  goToNext(): void {
-    const isLastSlide = this.currentIndex === this.slides.length - 1;
-    const newIndex = isLastSlide ? 0 : this.currentIndex + 1;
-
-    this.resetTimer();
-    this.currentIndex = newIndex;
+  pararTimer(): void {
+    this.timerSubs?.unsubscribe();
   }
 
-  goToSlide(slideIndex: number): void {
-    this.resetTimer();
-    this.currentIndex = slideIndex;
+  ativarImagem(index: number): void {
+    this.indexImagemAtiva = index;
+    this.iniciarTimer();
   }
 
   getCurrentSlideUrl() {
-    return this.baseUrl + this.slides[this.currentIndex];
+    return this.baseUrl + this.slides[this.indexImagemAtiva];
+  }
+
+  getMovieTitle(){
+    return this.titles[this.indexImagemAtiva];
   }
 }

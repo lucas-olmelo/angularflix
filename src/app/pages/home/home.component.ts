@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   ];
   banners: any[] = [
   ];
+  titles: any[] = [
+  ];
 
   constructor(private moviesService: MoviesService) { }
 
@@ -26,6 +28,11 @@ export class HomeComponent implements OnInit {
 
     this.movies.forEach(movie => {
       this.banners.push(movie.backdrop_path);
+      if (movie.title != null) {
+        this.titles.push(movie.title);
+      } else {
+        this.titles.push(movie.name);
+      }
     });
   }
 }
