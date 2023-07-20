@@ -1,8 +1,10 @@
-<a [routerLink]="[getMovieId()]">
-  <div class="item" [style.backgroundImage]="'url(' + getCurrentSlideUrl() + ')'">
-    <span class="title">{{getMovieTitle()}}</span>
-  </div>
-</a>
+<div class="container">
+  <a [routerLink]="[getMediaType(),getMovieId()]">
+    <div class="item" [style.backgroundImage]="'url(' + getCurrentSlideUrl() + ')'">
+      <span class="title">{{getMovieTitle()}}</span>
+    </div>
+  </a>
+</div>
 
 <div class="botoes-controle">
   <button

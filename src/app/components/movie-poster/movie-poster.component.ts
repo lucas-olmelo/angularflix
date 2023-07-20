@@ -11,11 +11,17 @@ export class MoviePosterComponent implements OnInit {
 
   @Input() movie: any;
   id: number = 0;
+  mediaType: string = '';
 
   baseUrl = "https://image.tmdb.org/t/p/original/"
 
   ngOnInit(): void {
     this.id = this.movie.id;
+    if (this.movie.media_type === 'movie') {
+      this.mediaType = 'movie';
+    } else {
+      this.mediaType = 'tv';
+    }
   }
 
 }

@@ -55,6 +55,19 @@ export class MoviesService {
     return data
   }
 
+  public async getSeason(id: string, season: string): Promise<any[]> {
+
+    let data = []
+    try {
+        const response = await fetch(`${this.BASE_URL}/tv/${id}/season/${season}?language=pt-BR&api_key=${this.API_KEY}`);
+        const responseData = await response.json();
+        data = responseData;
+    } catch (error) {
+
+    }
+    return data
+  }
+
   // API_URL = 'https://api.themoviedb.org/3/trending/all/week?language=pt-Br&?language=pt-Br&api_key=906ee8fec43965cfb3accc4205c359ec';
 
   /**

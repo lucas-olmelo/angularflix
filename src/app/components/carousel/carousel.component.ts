@@ -22,6 +22,7 @@ export class CarouselComponent implements OnInit, OnDestroy {
   @Input() slides: string[] = [];
   @Input() titles: string[] = [];
   @Input() ids: string[] = [];
+  @Input() mediaTypes: string[] = [];
 
   // Guarda a posição no array "imagens" que
   // corresponde a imagem que está sendo exibida
@@ -37,6 +38,8 @@ export class CarouselComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log(this.mediaTypes);
+
     this.iniciarTimer();
   }
 
@@ -71,5 +74,9 @@ export class CarouselComponent implements OnInit, OnDestroy {
 
   getMovieId(){
     return this.ids[this.indexImagemAtiva];
+  }
+
+  getMediaType(){
+    return this.mediaTypes[this.indexImagemAtiva];
   }
 }

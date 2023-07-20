@@ -18,17 +18,29 @@ export class MovieComponent implements OnInit {
     this.getMovieDetails();
   }
 
-  getMovieId(): string {
+  getId(): string {
     let id: string | null = '';
     this.route.paramMap.subscribe( value =>
       {id = value.get('id')});
     return id;
   }
 
-  async getMovieDetails(){
-    const id = this.getMovieId();
+  getMediaType(): string {
+    let mediaType: string | null = '';
+    this.route.paramMap.subscribe( value =>
+      {mediaType = value.get('type')});
+    return mediaType;
+  }
 
-    const request = await this.moviesService.getMovie(id);
+  async getMovieDetails(){
+    const id = this.getId();
+    let request;
+
+    if (this.getMediaType() === 'movie') {
+      request = await this.moviesService.getMovie(id);
+    } else {
+      request = await this.moviesService.getShow(id);
+    }
     this.details = request;
   }
 
