@@ -5,21 +5,29 @@
       <a [routerLink]="['']"><i class="bi bi-arrow-left"></i></a>
     </div>
 
-    <h1 class="movie_title">{{details.title}}</h1>
-    <h1 *ngIf="details.title == null" class="movie_title">{{details.name}}</h1>
-
-    <p *ngIf="details.original_title != details.title">{{details.original_title}}</p>
-    <p *ngIf="details.original_title == null && details.original_name != details.name">{{details.original_name}}</p>
-
-    <img class="company_logo" src="{{imageUrl}}{{details.production_companies[0].logo_path}}" alt="{{details.production_companies[0].name}}">
-    <div class="movie_genres">
-      <p *ngFor="let genre of details.genres">{{genre.name}}</p>
+    <div class="title_logo">
+      <div class="title_original">
+        <h1 *ngIf="getMediaType() == 'movie'" class="movie_title">{{details.title}}</h1>
+        <h1 *ngIf="getMediaType() == 'tv'" class="movie_title">{{details.name}}</h1>
+        <p *ngIf="getMediaType() == 'movie' && details.original_title != details.title">{{details.original_title}}</p>
+        <p *ngIf="getMediaType() == 'tv' && details.original_name != details.name">{{details.original_name}}</p>
+      </div>
+      <img class="company_logo" src="{{imageUrl}}{{details.production_companies[0].logo_path}}" alt="{{details.production_companies[0].name}}">
     </div>
+
+    <div class="movie_details">
+      <p class="movie_date" *ngIf="getMediaType() == 'movie'">{{details.release_date.split('-')[0]}}</p>
+      <p class="movie_date" *ngIf="getMediaType() == 'tv'">{{details.first_air_date.split('-')[0]}}</p>
+      <div class="movie_genres">
+        <p *ngFor="let genre of details.genres">{{genre.name}}</p>
+      </div>
+    </div>
+
     <h2 class="movie_tagline">{{details.tagline}}</h2>
     <p class="movie_overview">{{details.overview}}</p>
 
     <div class="seasons_container">
-      <p *ngFor="let season of details.seasons">{{season.name}}</p>
+      <p class="season" *ngFor="let season of details.seasons">{{season.name}}</p>
     </div>
   </div>
 </div>

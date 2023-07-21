@@ -38,8 +38,6 @@ export class CarouselComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log(this.mediaTypes);
-
     this.iniciarTimer();
   }
 

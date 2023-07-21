@@ -2,13 +2,13 @@
 <h2 class="page-title">Em Alta</h2>
 
 <div class="movies-gallery">
-  <app-movie-poster class="item" *ngFor="let name of movies" [movie]="name"></app-movie-poster>
-  <!-- <div class="controls">
-    <button class="arrow-left control" aria-label="Previous image">
-      <i class="fa-solid fa-backward" style="color: #fff;"></i>
-    </button>
-    <button class="arrow-right control" aria-label="Previous image">
-      <i class="fa-solid fa-forward" style="color: #fff;"></i>
-    </button>
-  </div> -->
+  <button class="arrow-left control" aria-label="Previous image">
+    <i class="fa-solid fa-backward" style="color: #fff;"></i>
+  </button>
+  <div class="movies-container">
+    <app-movie-poster class="item" *ngFor="let name of movies" [movie]="name"></app-movie-poster>
+  </div>
+  <button class="arrow-right control" aria-label="Previous image">
+    <i class="fa-solid fa-forward" style="color: #fff;"></i>
+</button>
 </div>

@@ -16,21 +16,36 @@
   height: 100vh;
 }
 
+.title_logo {
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+}
+
+.title_original {
+  background-color: transparent;
+}
+
 .movie_title {
   font-size: 50px;
 }
 
 .company_logo {
   max-width: 10%;
-  max-height: 5%;
+  max-height: 75px;
   background-color: transparent;
-  margin: 1% auto;
+  margin: auto;
+  margin-right: 5%;
 }
 
-.movie_overview {
-  margin: 1% 0 2%;
-  width: 40%;
-  font-size: 20px;
+.movie_details {
+  background-color: transparent;
+  margin-top: 2%;
+}
+
+.movie_date {
+  font-size: 22px;
+  margin-bottom: 1%;
 }
 
 .movie_genres {
@@ -43,6 +58,21 @@
 
 .btn_voltar {
   background-color: transparent;
+  margin-bottom: 1%;
+}
+
+.movie_overview {
+  margin: 1% 0 4%;
+  width: 40%;
+  font-size: 20px;
+}
+
+.seasons_container {
+  background-color: transparent;
+}
+
+.season {
+  font-size: 25px;
   margin-bottom: 1%;
 }
 
