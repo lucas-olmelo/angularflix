@@ -12,6 +12,7 @@ export class MovieComponent implements OnInit {
   constructor(private route: ActivatedRoute, private moviesService: MoviesService) { }
 
   imageUrl: string = 'https://image.tmdb.org/t/p/original';
+  episodes: any;
   details: any;
 
   ngOnInit(): void {
@@ -44,4 +45,11 @@ export class MovieComponent implements OnInit {
     this.details = request;
   }
 
+  async getSeason(season: number) {
+    const id = this.getId();
+    let request;
+    request = await this.moviesService.getSeason(parseInt(id), season);
+    this.episodes = request;
+    console.log(this.episodes);
+  }
 }

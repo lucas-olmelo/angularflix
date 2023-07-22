@@ -1,3 +1,45 @@
-.gallery-container img{
-  max-width: 1080px;
+.container_episode {
+  background-color: transparent;
+  margin-bottom: 5%;
+}
+
+.banner_container {
+  position: relative;
+  background-color: transparent;
+}
+
+.episode_banner {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.episode_banner:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+i {
+  font-size: 75px;
+  position: absolute;
+  background-color: transparent;
+  left: 0;
+  top: 0;
+}
+
+.episode_title {
+  margin-top: 2%;
+  font-size: 22px;
+  background-color: transparent;
+}
+
+.episode_runtime {
+  background-color: transparent;
+}
+
+.episode_overview {
+  width: 100%;
+  margin-top: 1%;
+  font-size: 20px;
+  background-color: transparent;
 }

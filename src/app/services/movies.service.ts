@@ -55,13 +55,13 @@ export class MoviesService {
     return data
   }
 
-  public async getSeason(id: string, season: string): Promise<any[]> {
+  public async getSeason(id: number, season: number): Promise<any[]> {
 
     let data = []
     try {
         const response = await fetch(`${this.BASE_URL}/tv/${id}/season/${season}?language=pt-BR&api_key=${this.API_KEY}`);
         const responseData = await response.json();
-        data = responseData;
+        data = responseData.episodes;
     } catch (error) {
 
     }

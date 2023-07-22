@@ -76,6 +76,19 @@
   margin-bottom: 1%;
 }
 
+.episodes {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2%;
+}
+
+.episode {
+  width: 22.5%;
+  background-color: transparent;
+}
+
 .btn_voltar i {
   font-size: 30px;
   background-color: transparent;

@@ -27,7 +27,10 @@
     <p class="movie_overview">{{details.overview}}</p>
 
     <div class="seasons_container">
-      <p class="season" *ngFor="let season of details.seasons">{{season.name}}</p>
+      <p class="season" *ngFor="let season of details.seasons; index as i" (click)="getSeason(i + 1)">{{season.name}}</p>
+      <div class="episodes">
+        <app-banner class="episode" *ngFor="let episode of episodes; index as i" [episode]="episodes[i]"></app-banner>
+      </div>
     </div>
   </div>
 </div>
