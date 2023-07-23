@@ -1,36 +1,48 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-<div class="movie_container" [style.backgroundImage]="'url(' + imageUrl + details.backdrop_path +')'">
-  <div class="wrapper">
-    <div class="btn_voltar">
-      <a [routerLink]="['']"><i class="bi bi-arrow-left"></i></a>
-    </div>
-
-    <div class="title_logo">
-      <div class="title_original">
-        <h1 *ngIf="getMediaType() == 'movie'" class="movie_title">{{details.title}}</h1>
-        <h1 *ngIf="getMediaType() == 'tv'" class="movie_title">{{details.name}}</h1>
-        <p *ngIf="getMediaType() == 'movie' && details.original_title != details.title">{{details.original_title}}</p>
-        <p *ngIf="getMediaType() == 'tv' && details.original_name != details.name">{{details.original_name}}</p>
+<div class="movie_container">
+  <div class="movie_details" [style.backgroundImage]="'url(' + imageUrl + details.backdrop_path +')'">
+    <div class="wrapper">
+      <div class="btn_voltar">
+        <a [routerLink]="['']"><i class="bi bi-arrow-left"></i></a>
       </div>
-      <img class="company_logo" src="{{imageUrl}}{{details.production_companies[0].logo_path}}" alt="{{details.production_companies[0].name}}">
-    </div>
+      <div class="title_logo">
+        <div class="title_original">
+          <h1 *ngIf="getMediaType() == 'movie'" class="movie_title">{{details.title}}</h1>
+          <h1 *ngIf="getMediaType() == 'tv'" class="movie_title">{{details.name}}</h1>
+          <p *ngIf="getMediaType() == 'movie' && details.original_title != details.title">{{details.original_title}}</p>
+          <p *ngIf="getMediaType() == 'tv' && details.original_name != details.name">{{details.original_name}}</p>
+        </div>
 
-    <div class="movie_details">
-      <p class="movie_date" *ngIf="getMediaType() == 'movie'">{{details.release_date.split('-')[0]}}</p>
-      <p class="movie_date" *ngIf="getMediaType() == 'tv'">{{details.first_air_date.split('-')[0]}}</p>
-      <div class="movie_genres">
-        <p *ngFor="let genre of details.genres">{{genre.name}}</p>
+        <img *ngIf="getMediaType() == 'movie'" class="company_logo" src="{{imageUrl}}{{details.production_companies[0].logo_path}}" alt="{{details.production_companies[0].name}}">
+        <img *ngIf="getMediaType() == 'tv'" class="company_logo" src="{{imageUrl}}{{details.networks[0].logo_path}}" alt="{{details.networks[0].name}}">
+
+      </div>
+      <div class="movie_details">
+        <p class="movie_date" *ngIf="getMediaType() == 'movie'">{{details.release_date.split('-')[0]}}</p>
+        <p class="movie_date" *ngIf="getMediaType() == 'tv'">{{details.first_air_date.split('-')[0]}}</p>
+        <div class="movie_genres">
+          <p *ngFor="let genre of details.genres">{{genre.name}}</p>
+        </div>
+        <div *ngIf="getMediaType() == 'tv'" class="creators">
+          <p class="creators_tag">Criado por: </p>
+          <p class="creator" *ngFor="let creator of details.created_by">{{creator.name}}</p>
+        </div>
+      </div>
+
+
+      <h2 class="movie_tagline">{{details.tagline}}</h2>
+      <p class="movie_overview">{{details.overview}}</p>
+      <!-- <div class="crew">
+        <p>Elenco:</p>
+        <p *ngFor=""></p>
+      </div> -->
+
+      <div class="seasons_container">
+        <p class="season" *ngFor="let season of seasons; index as i" (click)="getSeason(i + 1)">{{season.name}}</p>
       </div>
     </div>
-
-    <h2 class="movie_tagline">{{details.tagline}}</h2>
-    <p class="movie_overview">{{details.overview}}</p>
-
-    <div class="seasons_container">
-      <p class="season" *ngFor="let season of details.seasons; index as i" (click)="getSeason(i + 1)">{{season.name}}</p>
-      <div class="episodes">
-        <app-banner class="episode" *ngFor="let episode of episodes; index as i" [episode]="episodes[i]"></app-banner>
-      </div>
-    </div>
+  </div>
+  <div class="episodes">
+    <app-banner class="episode" *ngFor="let episode of episodes; index as i" [episode]="episodes[i]"></app-banner>
   </div>
 </div>

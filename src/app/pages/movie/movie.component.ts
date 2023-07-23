@@ -12,8 +12,9 @@ export class MovieComponent implements OnInit {
   constructor(private route: ActivatedRoute, private moviesService: MoviesService) { }
 
   imageUrl: string = 'https://image.tmdb.org/t/p/original';
-  episodes: any;
+  episodes: any[] = [];
   details: any;
+  seasons: any[] = [];
 
   ngOnInit(): void {
     this.getMovieDetails();
@@ -43,13 +44,22 @@ export class MovieComponent implements OnInit {
       request = await this.moviesService.getShow(id);
     }
     this.details = request;
+    this.details.seasons.forEach((season: any) => {
+      if (season.name != 'Especiais') {
+        this.seasons.push(season);
+      }
+    });
   }
 
   async getSeason(season: number) {
     const id = this.getId();
     let request;
     request = await this.moviesService.getSeason(parseInt(id), season);
-    this.episodes = request;
+    request.forEach(episode => {
+      if (episode.overview != '') {
+        this.episodes.push(episode);
+      }
+    });
     console.log(this.episodes);
   }
 }

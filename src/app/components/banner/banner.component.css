@@ -16,7 +16,7 @@
 
 .episode_banner:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 i {
@@ -39,7 +39,7 @@ i {
 
 .episode_overview {
   width: 100%;
-  margin-top: 1%;
+  margin-top: 5%;
   font-size: 20px;
   background-color: transparent;
 }
