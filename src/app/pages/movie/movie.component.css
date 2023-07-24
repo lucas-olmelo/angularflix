@@ -1,3 +1,7 @@
+* {
+  background-color: transparent;
+}
+
 .movie_container {
   color: white;
   text-shadow: black 2px 2px 0;
@@ -12,18 +16,14 @@
 
 .wrapper {
   padding: 2%;
+  /* width: 100vw; */
+  height: 100vh;
   background-color: rgba(10,23,55,0.7);
-  /* background-color: rgb(54, 54, 54, 0.7); */
 }
 
 .title_logo {
   display: flex;
   flex-direction: row;
-  background-color: transparent;
-}
-
-.title_original {
-  background-color: transparent;
 }
 
 .movie_title {
@@ -33,20 +33,16 @@
 .company_logo {
   max-width: 10%;
   max-height: 75px;
-  background-color: transparent;
   margin: auto;
   margin-right: 5%;
-}
 
-.movie_details {
-  background-color: transparent;
-  margin: 2% auto;
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(255 255 255 / 100%)); 
+  filter: drop-shadow(0px 0px 5px rgba(255 255 255 / 100%));
 }
 
 .creators {
   display: flex;
   flex-direction: row;
-  background-color: transparent;
 }
 
 .creators_tag {
@@ -59,11 +55,10 @@
 
 .movie_date {
   font-size: 22px;
-  margin-bottom: 1%;
+  margin: 1% 0 2%;
 }
 
 .movie_genres {
-  background-color: transparent;
   display: flex;
   flex-direction: row;
   gap: 15px;
@@ -71,24 +66,29 @@
 }
 
 .btn_voltar {
-  background-color: transparent;
   margin-bottom: 1%;
 }
 
+.overview {
+  margin: 2% auto;
+}
+
 .movie_overview {
-  margin: 1% 0 4%;
+  margin: 1% 0;
   width: 40%;
   font-size: 20px;
 }
 
 .seasons_container {
-  background-color: transparent;
   display: flex;
   flex-direction: row;
+  overflow-x: scroll;
+  /* flex-wrap: wrap; */
   gap: 1%;
 }
 
 .season {
+  flex-shrink: 0;
   font-size: 20px;
   margin-bottom: 1%;
   background-color: #606060;
@@ -98,9 +98,7 @@
 }
 
 .episodes {
-  background-color: rgba(10,23,55,0.7);
   display: grid;
-  margin: 2%;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 

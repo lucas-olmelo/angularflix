@@ -22,7 +22,6 @@ export class MoviesService {
         const response = await fetch(`${this.BASE_URL}/trending/all/week?language=pt-BR&api_key=${this.API_KEY}&page=${page}`);
         const responseData = await response.json();
         data = responseData?.results;
-        console.log(data);
     } catch (error) {
 
     }
@@ -66,6 +65,19 @@ export class MoviesService {
 
     }
     return data
+  }
+
+  public async getLogos(id: number, mediaType: string, language: string) {
+    let data = []
+    try {
+        const response = await fetch(`${this.BASE_URL}/${mediaType}/${id}/images?language=${language}&api_key=${this.API_KEY}`);
+        const responseData = await response.json();
+        data = responseData.logos[0];
+    } catch (error) {
+
+    }
+    return data
+    
   }
 
   // API_URL = 'https://api.themoviedb.org/3/trending/all/week?language=pt-Br&?language=pt-Br&api_key=906ee8fec43965cfb3accc4205c359ec';

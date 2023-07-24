@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   titles: string[] = [];
   ids: string[] = [];
   mediaTypes: string[] = [];
+  logos: string[] = [];
 
 
   constructor(private moviesService: MoviesService) { }
@@ -35,5 +36,31 @@ export class HomeComponent implements OnInit {
         this.titles.push(movie.name);
       }
     });
+
+    this.getLogos();
+  }
+
+  async getLogos() {
+
+    for (let i = 0; i < this.ids.length; i++) {
+      const id = this.ids[i];
+
+      let mediaType: string = '';
+      let language = 'pt';
+
+      if (this.mediaTypes[i] === 'movie') {
+        mediaType = 'movie';
+      } else {
+        mediaType = 'tv';
+      }
+
+      let logo = await this.moviesService.getLogos(parseInt(id), mediaType, language);
+
+      if (!logo) {
+        logo = await this.moviesService.getLogos(parseInt(id), mediaType, 'en');
+      }
+
+      this.logos.push(logo);
+    }
   }
 }
