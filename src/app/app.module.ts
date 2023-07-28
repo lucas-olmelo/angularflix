@@ -11,6 +11,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { PosterLineComponent } from './components/poster-line/poster-line.component';
 import { MovieComponent } from './pages/movie/movie.component';
 import { BannerComponent } from './components/banner/banner.component';
+import { MoviesComponent } from './pages/movies/movies.component';
+import { ActorComponent } from './components/actor/actor.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { BannerComponent } from './components/banner/banner.component';
     CarouselComponent,
     PosterLineComponent,
     MovieComponent,
-    BannerComponent
+    BannerComponent,
+    MoviesComponent,
+    ActorComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,17 @@
+* {
+  background-color: transparent;
+}
+
+.actor_img {
+  height: 250px
+}
+
+.actor_name {
+  font-size: 25px;
+  max-width: 165px;
+}
+
+.actor_character {
+  color: darkgrey;
+  max-width: 165px;
+}

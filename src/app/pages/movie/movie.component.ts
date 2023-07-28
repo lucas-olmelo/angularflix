@@ -15,8 +15,16 @@ export class MovieComponent implements OnInit {
   episodes: any[] = [];
   details: any;
   seasons: any[] = [];
+  cast: any[] = [];
+  crew: any[] = [];
 
-  logo: string = ''
+  directors: any[] = [];
+  producers: any[] = [];
+  exProducers: any[] = [];
+  writers: any[] = [];
+  editors: any[] = [];
+
+  logoMovie: string = ''
 
   ngOnInit(): void {
     this.getMovieDetails();
@@ -53,8 +61,10 @@ export class MovieComponent implements OnInit {
       });
     }
 
+    this.getCrew();
+
     this.getLogo();
-    console.log(this.logo);
+    console.log(this.logoMovie);
   }
 
   async getSeason(season: number) {
@@ -77,23 +87,43 @@ export class MovieComponent implements OnInit {
 
   async getLogo() {
 
-    let mediaType: string = '';
     let language = 'pt';
 
-    if (this.getMediaType() === 'movie') {
-      mediaType = 'movie';
-    } else {
-      mediaType = 'tv';
-    }
-
-    let logo = await this.moviesService.getLogos(parseInt(this.getId()), mediaType, language);
+    let logo = await this.moviesService.getLogos(parseInt(this.getId()), this.getMediaType(), language);
 
     if (!logo) {
-      logo = await this.moviesService.getLogos(parseInt(this.getId()), mediaType, 'en');
+      logo = await this.moviesService.getLogos(parseInt(this.getId()), this.getMediaType(), 'en');
     }
 
     console.log(this.imageUrl + logo.file_path);
 
-    this.logo = this.imageUrl + logo.file_path;
+    this.logoMovie = this.imageUrl + logo.file_path;
+  }
+
+  async getCrew() {
+    const id = this.getId();
+    const mediaType = this.getMediaType();
+    let request;
+
+    request = await this.moviesService.getCrew(id, mediaType);
+    this.cast = request.cast;
+
+    request.crew.forEach((crew: any) => {
+      if (crew.job === 'Producer') {
+        this.producers.push(crew);
+      }
+      if (crew.job === 'Director') {
+        this.directors.push(crew);
+      }
+      if (crew.job === 'Executive Producer') {
+        this.exProducers.push(crew);
+      }
+      if (crew.job === 'Writer') {
+        this.writers.push(crew);
+      }
+      if (crew.job === 'Story Editor') {
+        this.editors.push(crew);
+      }
+    });
   }
 }

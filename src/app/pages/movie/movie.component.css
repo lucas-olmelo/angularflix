@@ -14,10 +14,10 @@
   background-repeat: no-repeat;
 }
 
-.wrapper {
-  padding: 2%;
+.wrapper, .episodes_crew {
+  padding: 1% 2%;
   /* width: 100vw; */
-  height: 100vh;
+  /* height: 100vh; */
   background-color: rgba(10,23,55,0.7);
 }
 
@@ -36,7 +36,7 @@
   margin: auto;
   margin-right: 5%;
 
-  -webkit-filter: drop-shadow(0px 0px 2px rgba(255 255 255 / 100%)); 
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(255 255 255 / 100%));
   filter: drop-shadow(0px 0px 5px rgba(255 255 255 / 100%));
 }
 
@@ -70,7 +70,7 @@
 }
 
 .overview {
-  margin: 2% auto;
+  margin-top: 2%;
 }
 
 .movie_overview {
@@ -82,9 +82,24 @@
 .seasons_container {
   display: flex;
   flex-direction: row;
-  overflow-x: scroll;
-  /* flex-wrap: wrap; */
+  overflow-x: auto;
   gap: 1%;
+}
+
+.cast_tag {
+  font-size: 22px;
+}
+
+.cast {
+  display: flex;
+  flex-direction: row;
+  overflow-x: hidden;
+  gap: 1%;
+  margin: 1% auto;
+}
+
+.cast:hover {
+  overflow-x: scroll;
 }
 
 .season {
@@ -100,11 +115,23 @@
 .episodes {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-bottom: 2%;
 }
 
 .episode {
   margin: 2%;
   background-color: transparent;
+}
+
+.crew {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+}
+
+.jobs {
+  margin-top: 1%;
+  margin-right: 5%;
 }
 
 .btn_voltar i {
