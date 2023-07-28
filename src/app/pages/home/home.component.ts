@@ -26,16 +26,38 @@ export class HomeComponent implements OnInit {
     const request = await this.moviesService.getTrending();
     this.movies = request;
 
-    this.movies.forEach(movie => {
-      this.banners.push(movie.backdrop_path);
-      this.ids.push(movie.id);
-      this.mediaTypes.push(movie.media_type);
-      if (movie.title != null) {
-        this.titles.push(movie.title);
-      } else {
-        this.titles.push(movie.name);
+    let randomNumbers = [];
+    for (let i = 0; i < 5; i++) {
+      randomNumbers.push(Math.floor(Math.random() * 19));
+    }
+
+    console.log(randomNumbers);
+
+    for (let i = 0; i < this.movies.length; i++) {
+      const movie = this.movies[i];
+
+      if (randomNumbers.includes(i)) {
+        this.banners.push(movie.backdrop_path);
+        this.ids.push(movie.id);
+        this.mediaTypes.push(movie.media_type);
+        if (movie.title != null) {
+          this.titles.push(movie.title);
+        } else {
+          this.titles.push(movie.name);
+        }
       }
-    });
+    }
+
+    // this.movies.forEach(movie => {
+    //   this.banners.push(movie.backdrop_path);
+    //   this.ids.push(movie.id);
+    //   this.mediaTypes.push(movie.media_type);
+    //   if (movie.title != null) {
+    //     this.titles.push(movie.title);
+    //   } else {
+    //     this.titles.push(movie.name);
+    //   }
+    // });
 
     this.getLogos();
   }

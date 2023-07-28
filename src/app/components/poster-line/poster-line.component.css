@@ -3,22 +3,60 @@
   margin: 40px auto auto 40px;
 }
 
-.movies-gallery {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  overflow-x: hidden;
+.menu_horizontal {
+	position: relative;
+}
+
+.conteudocaixas{
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
   margin-bottom: 5%;
 }
 
-.movies-container {
-  display: flex;
-  flex-direction: row;
+.imagemcaixas{
+  margin-top: 5px;
+  height: auto;
+  display: inline-block;
 }
 
-.movies-gallery:hover {
-  overflow-x: scroll;
+.position_btcx{
+  display: inline-block;
+  margin: 6px 10px 0 0;
 }
+
+.button_cx{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  font-size: 20px;
+  width: 40px;
+  height: 100%;
+  cursor: pointer;
+  opacity: .0;
+  border: none;
+}
+
+.button_cx i {
+  font-size: 30px;
+  background-color: transparent;
+  color: white;
+}
+
+.r {
+  right: 0;
+  background: linear-gradient(to right, transparent 0%, black 200%);
+}
+
+.l {
+  left: 0;
+  background: linear-gradient(to left, transparent 0%, black 200%);
+}
+
+.button_cx:hover {
+  opacity: 1;
+}
+
 /* Works on Firefox */
 * {
   scrollbar-width: thin;
@@ -27,36 +65,4 @@
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 12px;
-}
-
-.controls {
-  position: absolute;
-  height: 100%;
-}
-
-.arrow-left, .arrow-right {
-  font-size: 20px;
-  width: 80px;
-  cursor: pointer;
-  border: none;
-  opacity: .1;
-  transition: all 600ms ease-in-out;
-    /* position: absolute;
-    height: 100%; */
-}
-
-.arrow-left {
-  background: linear-gradient(to left, transparent 0%, black 200%);
-  left: 0;
-  right: auto;
-}
-
-.arrow-right {
-  background: linear-gradient(to right, transparent 0%, black 200%);
-  right: 0;
-  left: auto;
-}
-
-.arrow-left:hover, .arrow-right:hover {
-  opacity: 1;
 }

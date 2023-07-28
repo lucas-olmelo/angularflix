@@ -16,6 +16,8 @@ export class MovieComponent implements OnInit {
   details: any;
   seasons: any[] = [];
 
+  logo: string = ''
+
   ngOnInit(): void {
     this.getMovieDetails();
   }
@@ -41,17 +43,18 @@ export class MovieComponent implements OnInit {
     if (this.getMediaType() === 'movie') {
       request = await this.moviesService.getMovie(id);
       this.details = request;
-      this.getLogos();
     } else {
       request = await this.moviesService.getShow(id);
       this.details = request;
-      this.getLogos();
       this.details.seasons.forEach((season: any) => {
         if (season.name != 'Especiais') {
           this.seasons.push(season);
         }
       });
     }
+
+    this.getLogo();
+    console.log(this.logo);
   }
 
   async getSeason(season: number) {
@@ -61,26 +64,22 @@ export class MovieComponent implements OnInit {
     request = await this.moviesService.getSeason(parseInt(id), season);
 
     const data = new Date();
-    
+
     request.forEach(episode => {
       let dataEp = new Date(episode.air_date);
-      
+
       if (dataEp <= data) {
         this.episodes.push(episode);
       }
     });
-    console.log(this.episodes);
   }
 
 
-  async getLogos() {
+  async getLogo() {
 
     let mediaType: string = '';
     let language = 'pt';
 
-    console.log(this.getId());
-    console.log(this.getMediaType());
-    
     if (this.getMediaType() === 'movie') {
       mediaType = 'movie';
     } else {
@@ -90,10 +89,11 @@ export class MovieComponent implements OnInit {
     let logo = await this.moviesService.getLogos(parseInt(this.getId()), mediaType, language);
 
     if (!logo) {
-      console.log('sim');
       logo = await this.moviesService.getLogos(parseInt(this.getId()), mediaType, 'en');
     }
 
-    return this.imageUrl + logo;
+    console.log(this.imageUrl + logo.file_path);
+
+    this.logo = this.imageUrl + logo.file_path;
   }
 }

@@ -1,9 +1,7 @@
 <div class="container">
   <a [routerLink]="[getMediaType(),getMovieId()]">
     <div class="item" [style.backgroundImage]="'url(' + getCurrentSlideUrl() + ')'">
-      <!-- <div class="logo"> -->
         <img class="title" src="{{getLogo()}}" alt="{{getMovieTitle()}}">
-      <!-- </div> -->
     </div>
   </a>
 </div>

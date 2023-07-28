@@ -7,7 +7,7 @@
       </div>
       <div class="title_logo">
         <div class="title_original">
-          <img src="{{getLogos()}}" alt="">
+          <!-- <img src="{{getLogos()}}" alt=""> -->
           <h1 *ngIf="getMediaType() == 'movie'" class="movie_title">{{details.title}}</h1>
           <h1 *ngIf="getMediaType() == 'tv'" class="movie_title">{{details.name}}</h1>
           <p *ngIf="getMediaType() == 'movie' && details.original_title != details.title">{{details.original_title}}</p>
@@ -17,7 +17,7 @@
         <img *ngIf="getMediaType() == 'movie'" class="company_logo" src="{{imageUrl}}{{details.production_companies[0].logo_path}}" alt="{{details.production_companies[0].name}}">
         <img *ngIf="getMediaType() == 'tv'" class="company_logo" src="{{imageUrl}}{{details.networks[0].logo_path}}" alt="{{details.networks[0].name}}">
       </div>
-      
+
       <div class="movie_details">
         <p class="movie_date" *ngIf="getMediaType() == 'movie'">{{details.release_date.split('-')[0]}}</p>
         <p class="movie_date" *ngIf="getMediaType() == 'tv'">{{details.first_air_date.split('-')[0]}}</p>
