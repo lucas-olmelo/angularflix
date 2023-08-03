@@ -5,7 +5,6 @@
 .movie_container {
   color: white;
   text-shadow: black 2px 2px 0;
-  background-color: rgba(10,23,55,0.7);
 }
 
 .movie_details {
@@ -16,8 +15,6 @@
 
 .wrapper, .episodes_crew {
   padding: 1% 2%;
-  /* width: 100vw; */
-  /* height: 100vh; */
   background-color: rgba(10,23,55,0.7);
 }
 
@@ -120,13 +117,11 @@
 
 .episode {
   margin: 2%;
-  background-color: transparent;
 }
 
 .crew {
   display: flex;
   flex-direction: row;
-  align-items: start;
 }
 
 .jobs {
@@ -136,9 +131,4 @@
 
 .btn_voltar i {
   font-size: 30px;
-  background-color: transparent;
-}
-
-p, h1, h2, a {
-  background-color: transparent;
 }

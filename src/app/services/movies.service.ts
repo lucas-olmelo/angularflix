@@ -91,7 +91,18 @@ export class MoviesService {
     return data;
   }
 
-  // API_URL = 'https://api.themoviedb.org/3/trending/all/week?language=pt-Br&?language=pt-Br&api_key=906ee8fec43965cfb3accc4205c359ec';
+  public async getPopularTopRated(mediaType: string, order: string): Promise<any[]> {
+
+    let data = []
+    try {
+        const response = await fetch(`${this.BASE_URL}/${mediaType}/${order}?language=pt-BR&api_key=${this.API_KEY}`);
+        const responseData = await response.json();
+        data = responseData.results;
+    } catch (error) {
+
+    }
+    return data
+  }
 
   /**
    * getMovies

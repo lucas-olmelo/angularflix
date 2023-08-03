@@ -6,8 +6,15 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Ubuntu', sans-serif;
-  background-color: rgba(10,23,55);
+  background-color: transparent;
   scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+body {
+  /* background: rgb(1,21,85);
+  background: linear-gradient(90deg, rgba(1,21,85,1) 0%, rgba(14,108,220,1) 39%, rgba(45,190,255,1) 100%); */
+  background-image: linear-gradient( 135deg, #3B2667 10%, #BC78EC 100%);
 }
 
 a {

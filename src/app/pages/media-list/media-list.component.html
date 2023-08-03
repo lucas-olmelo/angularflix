@@ -1,0 +1,6 @@
+<app-header></app-header>
+<app-poster-line *ngIf="getMediaType() === 'tv'" [movies] = popular [title]="'Séries populares'"></app-poster-line>
+<app-poster-line *ngIf="getMediaType() === 'tv'" [movies] = topRated [title]="'Séries melhores avaliadas'"></app-poster-line>
+
+<app-poster-line *ngIf="getMediaType() === 'movie'" [movies] = popular [title]="'Filmes populares'"></app-poster-line>
+<app-poster-line *ngIf="getMediaType() === 'movie'" [movies] = topRated [title]="'Filmes melhores avaliados'"></app-poster-line>

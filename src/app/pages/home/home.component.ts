@@ -48,17 +48,6 @@ export class HomeComponent implements OnInit {
       }
     }
 
-    // this.movies.forEach(movie => {
-    //   this.banners.push(movie.backdrop_path);
-    //   this.ids.push(movie.id);
-    //   this.mediaTypes.push(movie.media_type);
-    //   if (movie.title != null) {
-    //     this.titles.push(movie.title);
-    //   } else {
-    //     this.titles.push(movie.name);
-    //   }
-    // });
-
     this.getLogos();
   }
 

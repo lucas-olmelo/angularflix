@@ -23,5 +23,4 @@ export class MoviePosterComponent implements OnInit {
       this.mediaType = 'tv';
     }
   }
-
 }

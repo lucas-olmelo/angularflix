@@ -10,6 +10,7 @@ export class PosterLineComponent implements OnInit {
   constructor() { }
 
   @Input() movies:any;
+  @Input() title: string = '';
 
   ngOnInit(): void {
     // Cria um evento "click" para cada botão

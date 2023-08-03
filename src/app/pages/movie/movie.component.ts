@@ -60,11 +60,7 @@ export class MovieComponent implements OnInit {
         }
       });
     }
-
     this.getCrew();
-
-    this.getLogo();
-    console.log(this.logoMovie);
   }
 
   async getSeason(season: number) {
